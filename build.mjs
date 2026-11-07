@@ -426,19 +426,19 @@ function impressum(lang) {
   const main = `
 <section class="page-head"><div class="wrap"><h1>Impressum</h1>${en ? '<p class="lead">Legal notice according to § 5 DDG (German law). Shown in German.</p>' : ''}</div></section>
 <section class="section legal"><div class="wrap">
-  <p class="draft-note">${en ? 'Draft. Please fill in the marked fields and have it checked before go-live.' : 'Entwurf. Bitte markierte Felder ergänzen und vor dem Livegang prüfen lassen.'}</p>
+  <p class="draft-note">${en ? 'Draft. Please have it checked before go-live.' : 'Entwurf. Bitte vor dem Livegang prüfen lassen.'}</p>
   <h2>Angaben gemäß § 5 DDG</h2>
   <p>Data Vision Consulting &amp; Services UG (haftungsbeschränkt)<br>Osterhausenstr. 12A<br>90459 Nürnberg<br>Deutschland</p>
   <h2>Vertreten durch</h2>
-  <p>${TODO('Geschäftsführer: Name bestätigen')}</p>
+  <p>Geschäftsführer: Chinar Gokul Kakutsey</p>
   <h2>Kontakt</h2>
   <p>Telefon: ${PHONE}<br>E-Mail: <a href="mailto:${EMAIL}">${EMAIL}</a></p>
   <h2>Registereintrag</h2>
-  <p>Registergericht: ${TODO('z. B. Amtsgericht Nürnberg')}<br>Registernummer: ${TODO('HRB …')}</p>
+  <p>Registergericht: Amtsgericht Nürnberg<br>Registernummer: HRB 42382</p>
   <h2>Umsatzsteuer-ID</h2>
-  <p>Umsatzsteuer-Identifikationsnummer gemäß § 27a UStG: ${TODO('DE …')}</p>
-  <h2>Verantwortlich für den Inhalt</h2>
-  <p>${TODO('Name')}, Anschrift wie oben</p>
+  <p>Umsatzsteuer-Identifikationsnummer gemäß § 27a UStG: DE368127134</p>
+  <h2>Verantwortlich für den Inhalt nach § 18 Abs. 2 MStV</h2>
+  <p>Chinar Gokul Kakutsey, Anschrift wie oben</p>
   <h2>Verbraucherstreitbeilegung</h2>
   <p>Wir sind nicht bereit oder verpflichtet, an Streitbeilegungsverfahren vor einer Verbraucherschlichtungsstelle teilzunehmen.</p>
 </div></section>`;
