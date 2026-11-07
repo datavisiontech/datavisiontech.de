@@ -57,7 +57,10 @@ p { margin: 0 0 1em; max-width: 68ch; }
 .nav a[aria-current="page"] { box-shadow: inset 0 -3px 0 var(--coral); border-radius: 0; }
 .lang { font-size: 0.9rem; color: var(--ink-soft); text-decoration: none; border: 1px solid var(--line); padding: 5px 10px; border-radius: var(--radius); }
 .lang:hover { border-color: var(--ink); color: var(--ink); }
-.menu-btn { display: none; margin-left: auto; background: none; border: 1px solid var(--line); border-radius: var(--radius); padding: 8px 12px; font: inherit; font-weight: 600; color: var(--ink); cursor: pointer; }
+.menu-btn { display: none; margin-left: auto; background: none; border: 0; border-radius: var(--radius); padding: 6px; cursor: pointer; line-height: 0; }
+.menu-btn img { width: 30px; height: 32px; transition: transform .2s ease; }
+.menu-btn[aria-expanded="true"] img { transform: rotate(90deg); }
+.menu-btn:hover { background: var(--mist); }
 
 @media (max-width: 860px) {
   .menu-btn { display: block; }

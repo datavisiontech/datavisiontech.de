@@ -145,7 +145,7 @@ ${NOINDEX ? '<meta name="robots" content="noindex, nofollow">\n' : ''}<link rel=
 ${NOINDEX ? `<div class="preview-note">${t.preview}</div>\n` : ''}<header class="site-header">
   <div class="wrap">
     <a class="brand" href="${L('')}"><img src="${asset(lang, page, 'logo.png')}" width="171" height="44" alt="Data Vision – simplifying complexity"></a>
-    <button class="menu-btn" aria-expanded="false" aria-controls="site-nav">${t.menu}</button>
+    <button class="menu-btn" aria-expanded="false" aria-controls="site-nav" aria-label="${t.menu}"><img src="${asset(lang, page, 'menu-mark.png')}" width="42" height="44" alt=""></button>
     <nav class="nav" id="site-nav" aria-label="Main">
       ${['services', 'products', 'training', 'about', 'contact'].map(navItem).join('\n      ')}
       <a class="lang" href="${href(lang, page, other, page)}" hreflang="${other}" lang="${other}" title="${t.langSwitchLabel}">${t.langSwitch}</a>
