@@ -13,8 +13,7 @@ Website of Data Vision Consulting & Services (DVCS). Static HTML, English and Ge
 
 ## Hosting
 
-Any static host works (Cloudflare Pages, Netlify, GitHub Pages).
-Build command: `node build.mjs`, output folder: `dist`.
+GitHub Pages. Build command: `node build.mjs`, output folder: `dist`.
 
 ## Before go-live
 

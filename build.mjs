@@ -450,11 +450,14 @@ function datenschutz(lang) {
   const main = `
 <section class="page-head"><div class="wrap"><h1>${en ? 'Privacy policy' : 'Datenschutzerklärung'}</h1>${en ? '<p class="lead">Shown in German.</p>' : ''}</div></section>
 <section class="section legal"><div class="wrap">
-  <p class="draft-note">${en ? 'Draft based on how this site works (no cookies, no tracking, no external fonts). Please have it checked before go-live.' : 'Entwurf auf Basis der Funktionsweise dieser Website (keine Cookies, kein Tracking, keine externen Schriften). Bitte vor dem Livegang prüfen lassen.'}</p>
+  <p class="draft-note">${en ? 'Draft. Please have it checked before go-live.' : 'Entwurf. Bitte vor dem Livegang prüfen lassen.'}</p>
   <h2>1. Verantwortlicher</h2>
   <p>Data Vision Consulting &amp; Services UG (haftungsbeschränkt), Osterhausenstr. 12A, 90459 Nürnberg, E-Mail: <a href="mailto:${EMAIL}">${EMAIL}</a>, Telefon: ${PHONE}</p>
-  <h2>2. Hosting und Server-Logfiles</h2>
-  <p>Diese Website wird bei ${TODO('Hosting-Anbieter, z. B. Cloudflare Pages')} gehostet. Beim Aufruf werden technisch notwendige Daten (IP-Adresse, Datum und Uhrzeit, aufgerufene Seite, Browsertyp) verarbeitet, um die Website auszuliefern und ihre Sicherheit zu gewährleisten. Rechtsgrundlage ist Art. 6 Abs. 1 lit. f DSGVO. ${TODO('Auftragsverarbeitungsvertrag mit dem Hoster abschließen und Speicherdauer ergänzen')}</p>
+  <h2>2. Hosting über GitHub Pages</h2>
+  <p>Diese Website wird über GitHub Pages gehostet. Anbieter ist die GitHub, Inc., 88 Colin P. Kelly Jr. St., San Francisco, CA 94107, USA. Die Website besteht nur aus statischen Seiten. Wir selbst speichern dabei keine Daten über Besucher.</p>
+  <p>Beim Aufruf der Website verarbeitet GitHub technisch notwendige Daten, um die Seiten auszuliefern. Nach Angaben von GitHub wird dabei die IP-Adresse der Besucher aus Sicherheitsgründen protokolliert und gespeichert. GitHub nennt dafür keine Speicherdauer. Wir haben keinen Zugriff auf diese Daten.</p>
+  <p>Rechtsgrundlage ist unser berechtigtes Interesse an einer sicheren und zuverlässigen Bereitstellung der Website (Art. 6 Abs. 1 lit. f DSGVO).</p>
+  <p>Dabei können Daten in die USA übertragen werden. GitHub gibt an, das EU-U.S. Data Privacy Framework einzuhalten, und nutzt zusätzlich die Standardvertragsklauseln der EU-Kommission. Mehr dazu in der <a href="https://docs.github.com/de/site-policy/privacy-policies/github-general-privacy-statement">Datenschutzerklärung von GitHub</a>.</p>
   <h2>3. Cookies und Tracking</h2>
   <p>Diese Website setzt keine Cookies und verwendet keine Analyse- oder Tracking-Werkzeuge. Schriften werden nicht von externen Servern geladen.</p>
   <h2>4. Kontakt per E-Mail und Kontaktformular</h2>
@@ -462,7 +465,7 @@ function datenschutz(lang) {
   <h2>5. Ihre Rechte</h2>
   <p>Sie haben das Recht auf Auskunft, Berichtigung, Löschung, Einschränkung der Verarbeitung, Datenübertragbarkeit und Widerspruch (Art. 15–21 DSGVO). Sie können sich bei einer Datenschutz-Aufsichtsbehörde beschweren, zum Beispiel beim Bayerischen Landesamt für Datenschutzaufsicht (BayLDA).</p>
   <h2>6. Stand</h2>
-  <p>${TODO('Datum')}</p>
+  <p>12. November 2026</p>
 </div></section>`;
   return layout(lang, 'datenschutz', (en ? 'Privacy policy' : 'Datenschutzerklärung') + ' – DVCS', 'Datenschutzerklärung der Data Vision Consulting & Services UG.', main);
 }
