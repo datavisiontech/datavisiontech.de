@@ -133,11 +133,14 @@ function layout(lang, page, title, desc, main) {
 ${NOINDEX ? '<meta name="robots" content="noindex, nofollow">\n' : ''}<link rel="canonical" href="${canonical}">
 <link rel="alternate" hreflang="en" href="${alt('en')}">
 <link rel="alternate" hreflang="de" href="${alt('de')}">
+<link rel="alternate" hreflang="x-default" href="${alt('en')}">
 <link rel="icon" href="${asset(lang, page, 'favicon.png')}" type="image/png">
 <link rel="apple-touch-icon" href="${asset(lang, page, 'apple-touch-icon.png')}">
 <meta property="og:title" content="${esc(title)}">
 <meta property="og:description" content="${esc(desc)}">
 <meta property="og:type" content="website">
+<meta property="og:url" content="${canonical}">
+<meta property="og:image" content="${SITE}/assets/og-image.png">
 <link rel="stylesheet" href="${asset(lang, page, 'site.css')}">
 </head>
 <body>
@@ -396,8 +399,8 @@ function contact(lang) {
     <label for="f-msg">${en ? 'Your message' : 'Ihre Nachricht'}</label>
     <textarea id="f-msg" name="message" required></textarea>
     <label class="check"><input type="checkbox" required> <span>${en
-      ? `I agree that DVCS uses my details to answer my request. See the <a href="${L('datenschutz')}">privacy policy</a>.`
-      : `Ich bin einverstanden, dass DVCS meine Angaben zur Beantwortung meiner Anfrage verwendet. Siehe <a href="${L('datenschutz')}">Datenschutzerklärung</a>.`}</span></label>
+      ? `I have read the <a href="${L('datenschutz')}">privacy policy</a>.`
+      : `Ich habe die <a href="${L('datenschutz')}">Datenschutzerklärung</a> gelesen.`}</span></label>
     <button class="btn" type="submit">${en ? 'Send message' : 'Nachricht senden'}</button>
     <p class="form-note">${en ? 'This opens your email program with the message ready to send.' : 'Dadurch öffnet sich Ihr E-Mail-Programm mit der fertigen Nachricht.'}</p>
   </form>
@@ -425,8 +428,8 @@ function impressum(lang) {
   const en = lang === 'en';
   const main = `
 <section class="page-head"><div class="wrap"><h1>Impressum</h1>${en ? '<p class="lead">Legal notice according to § 5 DDG (German law). Shown in German.</p>' : ''}</div></section>
-<section class="section legal"><div class="wrap">
-  <p class="draft-note">${en ? 'Draft. Please have it checked before go-live.' : 'Entwurf. Bitte vor dem Livegang prüfen lassen.'}</p>
+<section class="section legal"${en ? ' lang="de"' : ''}><div class="wrap">
+  ${NOINDEX ? `<p class="draft-note">${en ? 'Draft. Please have it checked before go-live.' : 'Entwurf. Bitte vor dem Livegang prüfen lassen.'}</p>` : ''}
   <h2>Angaben gemäß § 5 DDG</h2>
   <p>Data Vision Consulting &amp; Services UG (haftungsbeschränkt)<br>Osterhausenstr. 12A<br>90459 Nürnberg<br>Deutschland</p>
   <h2>Vertreten durch</h2>
@@ -449,15 +452,15 @@ function datenschutz(lang) {
   const en = lang === 'en';
   const main = `
 <section class="page-head"><div class="wrap"><h1>${en ? 'Privacy policy' : 'Datenschutzerklärung'}</h1>${en ? '<p class="lead">Shown in German.</p>' : ''}</div></section>
-<section class="section legal"><div class="wrap">
-  <p class="draft-note">${en ? 'Draft. Please have it checked before go-live.' : 'Entwurf. Bitte vor dem Livegang prüfen lassen.'}</p>
+<section class="section legal"${en ? ' lang="de"' : ''}><div class="wrap">
+  ${NOINDEX ? `<p class="draft-note">${en ? 'Draft. Please have it checked before go-live.' : 'Entwurf. Bitte vor dem Livegang prüfen lassen.'}</p>` : ''}
   <h2>1. Verantwortlicher</h2>
   <p>Data Vision Consulting &amp; Services UG (haftungsbeschränkt), Osterhausenstr. 12A, 90459 Nürnberg, E-Mail: <a href="mailto:${EMAIL}">${EMAIL}</a>, Telefon: ${PHONE}</p>
   <h2>2. Hosting über GitHub Pages</h2>
   <p>Diese Website wird über GitHub Pages gehostet. Anbieter ist die GitHub, Inc., 88 Colin P. Kelly Jr. St., San Francisco, CA 94107, USA. Die Website besteht nur aus statischen Seiten. Wir selbst speichern dabei keine Daten über Besucher.</p>
   <p>Beim Aufruf der Website verarbeitet GitHub technisch notwendige Daten, um die Seiten auszuliefern. Nach Angaben von GitHub wird dabei die IP-Adresse der Besucher aus Sicherheitsgründen protokolliert und gespeichert. GitHub nennt dafür keine Speicherdauer. Wir haben keinen Zugriff auf diese Daten.</p>
   <p>Rechtsgrundlage ist unser berechtigtes Interesse an einer sicheren und zuverlässigen Bereitstellung der Website (Art. 6 Abs. 1 lit. f DSGVO).</p>
-  <p>Dabei können Daten in die USA übertragen werden. GitHub gibt an, das EU-U.S. Data Privacy Framework einzuhalten, und nutzt zusätzlich die Standardvertragsklauseln der EU-Kommission. Mehr dazu in der <a href="https://docs.github.com/de/site-policy/privacy-policies/github-general-privacy-statement">Datenschutzerklärung von GitHub</a>.</p>
+  <p>Dabei können Daten in die USA übertragen werden. GitHub gibt an, das EU-U.S. Data Privacy Framework einzuhalten, und nutzt zusätzlich die Standardvertragsklauseln der EU-Kommission. Mehr dazu in der <a href="https://docs.github.com/site-policy/privacy-policies/github-privacy-statement">Datenschutzerklärung von GitHub</a>.</p>
   <h2>3. Cookies und Tracking</h2>
   <p>Diese Website setzt keine Cookies und verwendet keine Analyse- oder Tracking-Werkzeuge. Schriften werden nicht von externen Servern geladen.</p>
   <h2>4. Kontakt per E-Mail und Kontaktformular</h2>
@@ -472,6 +475,35 @@ function datenschutz(lang) {
 
 const RENDER = { '': home, services, products, training, about, contact, impressum, datenschutz };
 
+function notFound() {
+  const main = `
+<section class="page-head"><div class="wrap">
+  <h1>Page not found</h1>
+  <p class="lead">This page does not exist or has moved. <span lang="de">Diese Seite gibt es nicht oder sie wurde verschoben.</span></p>
+  <div class="actions"><a class="btn" href="/">Go to the home page</a><a class="btn btn-quiet" href="/de/" lang="de">Zur Startseite</a></div>
+</div></section>`;
+  // GitHub Pages serves 404.html for any path, so all links must start at the site root.
+  return layout('en', '', 'Page not found – DVCS', 'This page does not exist.', main)
+    .replace(/(href|src)="(?!https?:|mailto:|tel:|#|\/)(?:\.\/)?([^"]*)"/g, '$1="/$2"')
+    .replace(/<link rel="canonical"[^>]*>\n/, '')
+    .replace(/<link rel="alternate"[^>]*>\n/g, '');
+}
+
+// Old WordPress addresses that other sites or search engines may still link to.
+const REDIRECTS = {
+  'about-us': 'about/',
+  'contacts': 'contact/',
+  'product/dvlca4plm': 'products/#dvlca4plm',
+};
+const redirectPage = (to) => `<!doctype html>
+<html lang="en"><head><meta charset="utf-8">
+<title>Moved – DVCS</title>
+<meta name="robots" content="noindex">
+<link rel="canonical" href="${SITE}/${to}">
+<meta http-equiv="refresh" content="0; url=/${to}">
+</head><body><p>This page has moved: <a href="/${to}">${SITE}/${to}</a></p></body></html>
+`;
+
 // ---------- write ----------
 rmSync(OUT, { recursive: true, force: true });
 for (const lang of ['en', 'de']) {
@@ -480,6 +512,15 @@ for (const lang of ['en', 'de']) {
     mkdirSync(dirname(file), { recursive: true });
     writeFileSync(file, RENDER[page](lang));
   }
+}
+if (!PREVIEW) {
+  writeFileSync(join(OUT, '404.html'), notFound());
+  for (const [from, to] of Object.entries(REDIRECTS)) {
+    mkdirSync(join(OUT, from), { recursive: true });
+    writeFileSync(join(OUT, from, 'index.html'), redirectPage(to));
+  }
+  writeFileSync(join(OUT, '.nojekyll'), '');
+  writeFileSync(join(OUT, 'CNAME'), 'datavisiontech.de\n');
 }
 mkdirSync(join(OUT, 'assets'), { recursive: true });
 for (const f of readdirSync('src/assets')) copyFileSync(join('src/assets', f), join(OUT, 'assets', f));
