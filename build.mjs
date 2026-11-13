@@ -7,7 +7,7 @@ import { join, dirname } from 'node:path';
 const PREVIEW = process.argv.includes('--preview');
 const OUT = PREVIEW ? 'preview' : 'dist';
 // Keep search engines out until the site goes live. Set to false at go-live.
-const NOINDEX = true;
+const NOINDEX = false;
 const SITE = 'https://datavisiontech.de';
 const EMAIL = 'contact@datavisiontech.de';
 const PHONE = '+49 151 7530 0618';
